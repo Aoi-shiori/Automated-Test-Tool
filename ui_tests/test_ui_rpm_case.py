@@ -12,7 +12,6 @@ from selenium.webdriver.common.action_chains import ActionChains
 from common.logger import logger
 from common.config import WebPortal_username,WebPortal_password
 
-@pytest.mark.ui
 @pytest.mark.env(test="dev")
 @allure.epic("Webportal RPM")
 @allure.feature("RPM")

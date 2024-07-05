@@ -22,7 +22,6 @@ from common.logger import logger
 from pages.login import LoginPage
 
 
-@pytest.mark.ui
 @pytest.mark.env(test="dev")
 @allure.epic("Webportal Login")
 @allure.feature("Login")
