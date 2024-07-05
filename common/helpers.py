@@ -12,57 +12,6 @@ import time
 from common.config import WEBDRIVER_PATH, API_BASE_URL
 from common.logger import logger
 
-def setup_webdriver():
-    try:
-        options = Options()
-        # options.add_argument('--disable-offline-load-stale-cache')
-        # options.add_argument('--disable-application-cache')  # 禁用应用缓存
-        # options.add_argument('--no-sandbox')  # 禁用沙箱模式
-        # options.add_argument('--disable-gpu')  # 禁用GPU硬件加速
-        # options.add_argument('--disable-cache')  # 禁用缓存
-        # options.add_argument('--disk-cache-size=0')  # 设置磁盘缓存大小为0
-        # options.add_argument('incognito')  # 隐身模式
-        # options.add_argument("--headless")  # 无头模式
-        # driver = webdriver.Chrome(executable_path = WEBDRIVER_PATH, options=options)
-        # options.add_argument("--remote-debugging-port=9222")
-        # options.add_experimental_option('w3c', False)
-        options.set_capability("goog:loggingPrefs", {"performance": "ALL"})
-
-        driver = webdriver.Chrome(options=options)
-
-        logger.info("WebDriver initialized successfully")
-        return driver
-    except WebDriverException as e:
-        logger.error(f"Failed to initialize WebDriver: {e}")
-        raise e
-
-
-class Get_Login_Driver():
-    def __init__(self):
-        self.driver = setup_webdriver()
-        self.driver.get(API_BASE_URL + "/sign-in")
-        self.driver.find_element(By.NAME, "email").send_keys("jun@vivalink.com.cn")
-        self.driver.find_element(By.NAME, "password").send_keys("Jun@1234")
-        self.driver.find_element(By.CLASS_NAME, 'ant-btn').click()
-        time.sleep(2)
-        self.driver.implicitly_wait(10)
-        # driver.get(API_BASE_URL+"/user-management/pm-management")  # 打开用户管理页面
-
-        # driver.switch_to.window(driver.window_handles[-1])      # 定位到最新打开窗口
-        # driver.switch_to.window(driver.window_handles[-2])      # 定位到倒数第二个窗口
-        # driver.switch_to.window(driver.window_handles[0])        # 定位到第一个窗口
-
-        # performance_log = driver.get_log("performance")  # 获取性能日志
-        # interfaces = filter_requestWillBeSent(driver,performance_log)  # 获取性能日志
-
-
-    def get_driver(self):
-        return self.driver
-
-    def quit_driver(self):
-        self.driver.quit()
-
-
 def assert_equal(actual, expected, message=None):
     assert actual == expected, message or f"{actual} does not equal {expected}"
 

@@ -23,8 +23,6 @@ from common.logger import logger
 if __name__ == '__main__':
     logger.info(f"{"*"*20}开始执行测试用例{"*"*20}")
     pytest.main(["-s", "-v", "--alluredir=../reports/allure_reports", "--clean-alluredir"])
-    # os.system("allure serve ../reports/allure_reports -o ../reports/allure_reports  --clean")
-    # os.system("allure generate  ../reports/allure_reports  -o ../reports/allure_reports_html --clean")
 
     # 设置环境信息
     allureUtil_SetEnv = allureUtil_SetEnv()
