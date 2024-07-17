@@ -21,18 +21,17 @@ from common.config import Port
 from common.logger import logger
 
 if __name__ == '__main__':
-    logger.info(f"{"*"*20}开始执行测试用例{"*"*20}")
-    pytest.main(["-s", "-v", "--alluredir=../reports/allure_reports", "--clean-alluredir"])
+    # 修改Allure配置文件
+    allure = allureUtil()
+    allure.replaceAllureconfig()
 
-    # 设置环境信息
-    allureUtil_SetEnv = allureUtil_SetEnv()
-    allureUtil_SetEnv.doAllureCustom()
+    logger.info(f"{"*"*20}开始执行测试用例{"*"*20}")
+    pytest.main(["-s", "-v", "--alluredir=./reports/allure_reports", "--clean-alluredir"])
 
     # 生成报告
-    os.system("allure generate ../reports/allure_reports -o ../reports/allure_reports_html --clean")
+    os.system("allure generate ./reports/allure_reports -o ./reports/allure_reports_html --clean")
 
     # 生成报告后，自定义报告
-    allure = allureUtil()
     allure.doAllureCustom()
 
     # 启动零时Allure报告服务--正式环境需要使用Nginx或者Jenkins

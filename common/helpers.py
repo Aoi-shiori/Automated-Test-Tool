@@ -1,4 +1,18 @@
 # common/helpers.py
+# -*- coding: utf-8 -*-
+# @Time  : 2024-7-4 21:46:28
+# @Author: 郭军
+# @Email:391350540@qq.com
+# @File  : helpers.py
+# @Software: PyCharm
+# @PythonVersion: python 3.12
+# @Version : V1.0
+# @Project: Automated Testing
+# @Description: helpers
+# @Update: 2024-7-17 08:49:49
+# @UpdateContent:  helpers
+
+
 import json
 import logging
 from datetime import time
@@ -81,6 +95,9 @@ def filter_requestWillBeSent(driver):
     :param driver: WebDriver
     :param performance_log: 性能日志
     :return: interfaces
+    :rtype: list
+    :example: [{'interface': 'api/v1/subject/subjectID', 'url': 'http://, 'method': 'POST', 'request': '{"subjectID": "subjectID"}', 'response': '{"code": 200, "msg": "success"}'}]
+    :author: Jun
     """
     performance_log=driver.get_log("performance")
 

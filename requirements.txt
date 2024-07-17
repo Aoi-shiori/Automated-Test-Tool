@@ -1,5 +1,7 @@
 allure_python_commons==2.13.5
 psutil==6.0.0
-pytest==8.2.1
+pytest==8.2.2
 Requests==2.32.3
 selenium==4.22.0
+SQLAlchemy~=2.0.31
+allure-pytest==2.13.5

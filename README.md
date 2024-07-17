@@ -15,12 +15,16 @@
 
 
 ## 配置Java环境
+需要安装JDK1.8以上版本
+并配置环境变量
 
 ## 安装依赖
+一定要执行下面的命令安装依赖包
 ```shell
 pip install -r requirements.txt
 ```
 ## allure配置环境变量
+需要安装allure，并配置环境变量
 
 
 ## 启动测试

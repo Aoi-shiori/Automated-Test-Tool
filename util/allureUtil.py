@@ -1,3 +1,15 @@
+# -*- coding: utf-8 -*-
+# @Time  : 2024-7-4 21:46:28
+# @Author: 郭军
+# @Email:391350540@qq.com
+# @File  : allureUtil.py
+# @Software: PyCharm
+# @PythonVersion: python 3.12
+# @Version : V1.0
+# @Project: Automated Testing
+# @Description: allureUtil
+# @Update: 2024-7-17 08:49:49
+# @UpdateContent:  allureUtil
 import json
 import os
 import re
@@ -27,7 +39,6 @@ class allureUtil:
         self.replaceFavicon()
         self.replaceLogosvg()
         self.replacelogoText()
-        self.replaceAllureconfig()
 
     def replacelogoText(self):
         #图标右侧的展示文案
@@ -75,14 +86,16 @@ class allureUtil:
         # 定义源文件和目标目录
         target_Favicon_filepath = self.reportFilePath + r"/"
         source_Favicon_filepath = self.LogoFile
-        # 使用shutil.copy2()函数复制文件到目标目录并覆盖已存在的文件
         shutil.copy2(source_Favicon_filepath, target_Favicon_filepath)
 
     # 替换logo.svg文件
     def replaceLogosvg(self):
         # 定义源文件和目标目录
+        # target_Logosvg_filepath = self.reportFilePath + r"/plugin/custom-logo/"
         target_Logosvg_filepath = self.reportFilePath + r"/plugin/custom-logo/"
-        source_Logosvg_filepath = r"../static/imgs/custom-logo.svg"
+        # source_Logosvg_filepath = r"../static/imgs/custom-logo.svg"
+        source_Logosvg_filepath = r"./static/imgs/custom-logo.svg"
+
         # 使用shutil.copy2()函数复制文件到目标目录并覆盖已存在的文件
         shutil.copy2(source_Logosvg_filepath, target_Logosvg_filepath)
 
@@ -204,3 +217,10 @@ class allureUtil_SetEnv:
         allure_env_file = os.path.join(self.allureResultsPath, 'executor.json')
         with open(allure_env_file, 'w', encoding='utf-8') as f:
             f.write(str(json.dumps(allure_executor, ensure_ascii=False, indent=4)))
+if __name__ == '__main__':
+    allure = allureUtil()
+    # allure.doAllureCustom()
+    # allureUtil_SetEnv = allureUtil_SetEnv()
+    # allureUtil_SetEnv.doAllureCustom()
+    allure.replaceFavicon()
+    print("Allure报告定制完成")

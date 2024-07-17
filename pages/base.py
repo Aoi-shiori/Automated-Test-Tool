@@ -31,9 +31,6 @@ class BasePage:
                 # options.add_argument('--disk-cache-size=0')  # 设置磁盘缓存大小为0
                 # options.add_argument('incognito')  # 隐身模式
                 # options.add_argument("--headless")  # 无头模式
-                # driver = webdriver.Chrome(executable_path = WEBDRIVER_PATH, options=options)
-                # options.add_argument("--remote-debugging-port=9222")
-                # options.add_experimental_option('w3c', False)
                 options.set_capability("goog:loggingPrefs", {"performance": "ALL"})
                 self.driver = webdriver.Chrome(options=options)
                 logger.info("WebDriver initialized successfully")
@@ -48,7 +45,7 @@ class BasePage:
             self.driver = None
             print("请输入正确的浏览器,例如:chrome,firefox,ie")
 
-        # self.driver.maximize_window()
+        # self.driver.maximize_window() # 最大化窗口
         self.driver.implicitly_wait(10)
         self.wait = WebDriverWait(self.driver, 20)
         self.name_input_locator = (By.NAME, "email")
