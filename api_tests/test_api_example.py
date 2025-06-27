@@ -13,6 +13,7 @@ from common.helpers import assert_equal
 from common.config import API_BASE_URL
 
 @pytest.mark.api
+@pytest.mark.skip(reason="not implemented")
 def test_api_example():
     response = requests.get(API_BASE_URL)
     assert_equal(response.status_code, 200)

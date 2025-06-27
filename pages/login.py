@@ -48,11 +48,13 @@ class LoginPage(BasePage):
         interface = filter_requestWillBeSent(driver)
         return interface
 
+
     def logout(self):
         # 等待登录成功提示框消失
         time.sleep(5)
         # 定位悬停菜单的触发元素（例如，一个按钮或链接）
-        hover_element = self.driver.find_element(By.XPATH, '//*[@id="root"]/div/div/div/div/div/header/div/div[3]/div/div/div')
+        # hover_element = self.driver.find_element(By.XPATH, '//*[@id="root"]/div/div/div/div/div/header/div/div[3]/div/div/div')
+        hover_element = self.driver.find_element(By.CLASS_NAME, 'right')
 
         # 首先，我们需要将ActionChains对象初始化
         action = ActionChains(self.driver)
@@ -64,7 +66,8 @@ class LoginPage(BasePage):
         time.sleep(2)
 
         # 定位悬停菜单中你想点击的元素
-        menu_item_to_click = self.driver.find_element(By.XPATH, "/html/body/div[2]/div/ul/li[4]/span/div")
+        # menu_item_to_click = self.driver.find_element(By.XPATH, "/html/body/div[2]/div/ul/li[4]/span/div")
+        menu_item_to_click = self.driver.find_element(By.XPATH,"//div[contains(text(), 'Logout')]")
 
         # 现在，悬停菜单已经打开，我们可以点击其中的元素
         action.click(menu_item_to_click).perform()

@@ -1,0 +1,27 @@
+development:
+  postgresql:
+    main: postgresql://user:password@localhost/main_db
+    secondary: postgresql://user:password@localhost/secondary_db
+test:
+  mysql:
+    url: postgresql://user:password@localhost/test_db
+    port: 3360
+    user: user
+    password: password
+    host: localhost
+    database: test_db
+    driver: org.postgresql.Driver
+    dialect: org.hibernate.dialect.PostgreSQLDialect
+    hbm2ddl: update
+    show_sql: true
+    format_sql: true
+    hibernate:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      show_sql: true
+      format_sql: true
+      hbm2ddl: update
+      driver: org.postgresql.Driver
+production:
+  postgresql:
+    main: postgresql://user:password@dbserver/prod_db
+

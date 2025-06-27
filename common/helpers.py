@@ -26,9 +26,9 @@ import time
 from common.config import WEBDRIVER_PATH, API_BASE_URL
 from common.logger import logger
 
-def assert_equal(actual, expected, message=None):
-    assert actual == expected, message or f"{actual} does not equal {expected}"
 
+def assert_equal(actual, expected, message=None):
+        assert actual == expected, message or f"{actual} does not equal {expected}"
 
 def assert_in(substring, string, message=None):
     assert substring in string, message or f"{substring} not found in {string}"
@@ -36,11 +36,14 @@ def assert_in(substring, string, message=None):
 def assert_not_in(substring, string, message=None):
     assert substring not in string, message or f"{substring} found in {string}"
 
+
 def assert_not_equal(actual, expected, message=None):
     assert actual != expected, message or f"{actual} equals {expected}"
 
+
 def assert_is_instance(obj, cls, message=None):
     assert isinstance(obj, cls), message or f"{obj} is not an instance of {cls}"
+
 
 def assert_is_not_instance(obj, cls, message=None):
     assert not isinstance(obj, cls), message or f"{obj} is an instance of {cls}"
@@ -99,7 +102,7 @@ def filter_requestWillBeSent(driver):
     :example: [{'interface': 'api/v1/subject/subjectID', 'url': 'http://, 'method': 'POST', 'request': '{"subjectID": "subjectID"}', 'response': '{"code": 200, "msg": "success"}'}]
     :author: Jun
     """
-    performance_log=driver.get_log("performance")
+    performance_log = driver.get_log("performance")
 
     interfaces = []
 

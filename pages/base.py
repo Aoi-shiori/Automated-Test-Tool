@@ -43,7 +43,7 @@ class BasePage:
             self.driver = webdriver.Ie()
         else:
             self.driver = None
-            print("请输入正确的浏览器,例如:chrome,firefox,ie")
+            logger.info("请输入正确的浏览器,例如:chrome,firefox,ie")
 
         # self.driver.maximize_window() # 最大化窗口
         self.driver.implicitly_wait(10)
@@ -89,11 +89,22 @@ class BasePage:
         self.click(self.submit_button_locator)
         return self.driver
 
+    def get_select_options(self, locator: tuple, text: str):
+        element = self.find_elements(locator)
+        return [option.text for option in element.find_elements(By.TAG_NAME, text)]
+
+    def get_hovers(self,locator:tuple):
+        hover_element = self.find_element(locator)
+        action = ActionChains(self.driver)
+        action.move_to_element(hover_element).perform()
+        time.sleep(2)
+        return action
+
     def quit(self):
         self.driver.quit()
 
-
-
+    def save_screenshort(self,driver):
+        driver.save_screenshot_as_file('%s.jpg'%time.time())
 
 if __name__ == '__main__':
     base = BasePage('chrome')
